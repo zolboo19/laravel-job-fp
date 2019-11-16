@@ -24,7 +24,7 @@ class CreateCompaniesTable extends Migration
             $table->string('logo');
             $table->string('cover_photo');
             $table->string('slogan');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }
