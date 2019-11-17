@@ -21,3 +21,7 @@ Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 
 //company
 Route::get('/company/{id}/{company}', 'CompanyController@index')->name('company.index');
+
+//users
+Route::get('user/profile', 'UserController@index')->name('user.profile');
+Route::post('/user/profile/create', 'UserController@update')->name('user.profile.update');
