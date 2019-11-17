@@ -20,6 +20,11 @@
                     </div> --}}
                     <div class="card-body">
                         <input type="file" class="form-control" name="avatar">
+                        @if($errors->has('avatar'))
+                            <div class="error" style="color: red;">
+                                {{ $errors->first('avatar') }}
+                            </div>
+                        @endif
                         <button type="submit" class="btn btn-success float-right">Шинэчлэх</button>
                     </div>
                 </div>
@@ -113,6 +118,11 @@
                             <div class="card-header">Хэрэглэгчийн ажил байдлын тодорхойлолт</div>
                             <div class="card-body">
                                 <input type="file" class="form-control" name="cover_letter">
+                                @if($errors->has('cover_letter'))
+                                    <div class="error" style="color: red;">
+                                        {{ $errors->first('cover_letter') }}
+                                    </div>
+                                @endif
                                 <button type="submit" class="btn btn-success float-right">Файл хуулах</button>
                             </div>
                     </form>
@@ -128,6 +138,11 @@
                     <div class="card-header">Хэрэглэгчийн ажлын анкет</div>
                     <div class="card-body">
                             <input type="file" class="form-control" name="resume">
+                            @if($errors->has('resume'))
+                                <div class="error" style="color: red;">
+                                    {{ $errors->first('resume') }}
+                                </div>
+                            @endif
                             <button type="submit" class="btn btn-success float-right">Файл хуулах</button>
                     </div>
                     </form>
