@@ -12,9 +12,9 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id, Company $company)
     {
-        //
+        return view('companies.index', compact('company'));
     }
 
     /**

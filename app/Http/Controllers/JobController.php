@@ -14,7 +14,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        $jobs = Job::all();
+        return view('welcome', compact('jobs'));
     }
 
     /**
@@ -44,9 +45,9 @@ class JobController extends Controller
      * @param  \App\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show($id, Job $job)
     {
-        //
+        return view('jobs.show', compact('job'));
     }
 
     /**

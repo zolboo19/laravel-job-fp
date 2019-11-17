@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'JobController@index')->name('job.index');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//jobs
+Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
+
+//company
+Route::get('/company/{id}/{company}', 'CompanyController@index')->name('company.index');
