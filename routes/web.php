@@ -23,8 +23,12 @@ Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 Route::get('/company/{id}/{company}', 'CompanyController@index')->name('company.index');
 
 //users
-Route::get('user/profile', 'UserController@index')->name('user.profile');
+Route::get('/user/profile', 'UserController@index')->name('user.profile');
 Route::post('/user/profile/create', 'UserController@update')->name('user.profile.update');
 Route::post('/user/profile/coverletter', 'UserController@coverletter')->name('user.profile.coverletter');
 Route::post('/user/profile/resume', 'UserController@resume')->name('user.profile.resume');
 Route::post('/user/profile/avatar', 'UserController@avatar')->name('user.profile.avatar');
+
+//Employers
+Route::view('employer/register', 'auth.employer-register')->name('employer.create');
+Route::post('employer/register', 'EmployerRegisterController@store')->name('employer.register');

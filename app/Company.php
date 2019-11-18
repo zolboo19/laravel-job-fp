@@ -7,6 +7,7 @@ use App\Job;
 
 class Company extends Model
 {
+    protected $fillable = ['user_id', 'cname', 'slug', 'address', 'phone', 'website', 'logo', 'cover_photo', 'slogan', 'description'];
     public function getRouteKeyName()
     {
         return 'slug';

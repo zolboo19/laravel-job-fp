@@ -16,6 +16,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'address' => 'required',
+            'phone_number' => 'required|numeric',
             'experience' => 'required|min:20',
             'bio' => 'required|min:20',
         ]);
@@ -23,6 +24,7 @@ class UserController extends Controller
         //return $user_id;
         Profile::where('user_id', $user_id)->update([
             'address' => $request->address,
+            'phone_number' => $request->phone_number,
             'experience' => $request->experience,
             'bio' => $request->bio
         ]);

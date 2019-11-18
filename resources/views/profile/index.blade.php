@@ -52,6 +52,15 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Утасны дугаар</label>
+                                    <input type="text" name="phone_number" value="{{ auth()->user()->profile->phone_number }}" class="form-control">
+                                    @if($errors->has('phone_number'))
+                                        <div class="error" style="color: red;">
+                                            {{ $errors->first('phone_number') }}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="form-group">
                                     <label for="">Ажлын туршлага/Ажилласан байдал/</label>
                                     <textarea name="experience" class="form-control">{{ auth()->user()->profile->experience }}</textarea>
                                     @if($errors->has('experience'))
