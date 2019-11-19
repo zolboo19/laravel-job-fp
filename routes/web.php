@@ -17,10 +17,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //jobs
-Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
+Route::get('jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 
 //company
-Route::get('/company/{id}/{company}', 'CompanyController@index')->name('company.index');
+Route::get('company/{id}/{company}', 'CompanyController@index')->name('company.index');
+Route::get('company/create', 'CompanyController@create')->name('company.create');
+Route::post('company/create', 'CompanyController@update')->name('company.update');
+Route::post('company/coverphoto', 'CompanyController@coverphoto')->name('company.cover.photo');
+Route::post('company/logo', 'CompanyController@logo')->name('company.logo');
 
 //users
 Route::get('/user/profile', 'UserController@index')->name('user.profile');

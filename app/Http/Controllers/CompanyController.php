@@ -17,6 +17,38 @@ class CompanyController extends Controller
         return view('companies.index', compact('company'));
     }
 
+    public function coverphoto(Request $request)
+    {
+        $user_id = auth()->user()->id;
+        //dd($request);
+        if ($request->hasfile('cover_photo')) {
+            $file = $request->file('cover_photo');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $ext;
+            $file->move('upload/coverphoto', $filename);
+            Company::where('user_id', $user_id)->update([
+                'cover_photo' => $filename
+            ]);
+        }
+        return redirect()->back()->with('MessageCoverPhoto', 'Ажил олгогчын нүүр зургийг амжилттай шинэчиллээ.');
+    }
+
+    public function logo(Request $request)
+    {
+        $user_id = auth()->user()->id;
+        //dd($request);
+        if ($request->hasfile('logo')) {
+            $file = $request->file('logo');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $ext;
+            $file->move('upload/logo', $filename);
+            Company::where('user_id', $user_id)->update([
+                'logo' => $filename
+            ]);
+        }
+        return redirect()->back()->with('MessageLogo', 'Ажил олгогчын лого зургийг амжилттай шинэчиллээ.');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +56,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -67,9 +99,17 @@ class CompanyController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request)
     {
-        //
+        $user_id = auth()->user()->id;
+        Company::where('user_id', $user_id)->update([
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'website' => $request->website,
+            'slogan' => $request->slogan,
+            'description' => $request->description
+        ]);
+        return redirect()->back()->with('MessageCompany', 'Ажил олгогчын мэдээллийг амжилттай шинэчилэлээ');
     }
 
     /**
