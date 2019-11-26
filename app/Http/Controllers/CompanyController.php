@@ -12,6 +12,11 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('employer', ['except' => array('index', 'show')]);
+    }
+
     public function index($id, Company $company)
     {
         return view('companies.index', compact('company'));
