@@ -40,8 +40,34 @@
             </tbody>
         </table>
     </div>
+    <div>
+        <button class="btn btn-success btn-lg" style="width: 100%;">Бүх ажлын байрын харах</button>
+    </div>
+    <h1>Онцлох ажил олгогчид (Компани)</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach ($companies as $company)
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    @if(!empty(Auth::user()->company->logo))
+                    <img src="{{ asset('upload/logo') }}/{{ $company->logo }}" class="card-img-top" alt="..." width="80">
+                    @else
+                    <img src="{{ asset('cover/1574172205.png') }}" width="80">
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $company->cname }}</h5>
+                            <p class="card-text">{{ Str::limit($company->description, 35) }}</p>
+                            <a href="{{ route('company.index', [$company->id, $company->slug]) }}" class="btn btn-primary">Дэлгэрэнгүй мэдээлэл</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 </div>
 @endsection
+
 <style>
 .fas{
     color: darkblue
