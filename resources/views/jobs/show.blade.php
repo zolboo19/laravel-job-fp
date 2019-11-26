@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">Компаны товч танилцуулга</div>
+                    <div class="card-header">Ажил олгогчын товч танилцуулга</div>
 
                     <div class="card-body">
                         <p>Компани:
@@ -35,6 +35,20 @@
 
                     </div>
                 </div>
+                <br>
+                @if(Auth::check() && Auth::user()->user_type == 'simple_user')
+                    @if(!$job->checkApplication())
+                        <form action="{{  route('apply', [$job->id]) }}" method="GET">
+                            @csrf
+                            <button type="submit" class="btn btn-success" style="width: 100%">Ажилд орох хүсэлт илгээх</button>
+                        </form>
+                    @endif()
+                @endif
+                @if(Session::has('MessageApply'))
+                    <div class="alert alert-success">
+                        {{ Session::get('MessageApply') }}
+                    </div>
+                @endif
             </div>
     </div>
 </div>

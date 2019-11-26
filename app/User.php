@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Company::class);
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }
