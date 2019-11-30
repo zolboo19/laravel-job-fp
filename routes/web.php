@@ -26,6 +26,8 @@ Route::get('/jobs/myjob', 'JobController@myjob')->name('myjob');
 Route::get('/applications/{id}', 'JobController@apply')->name('apply');
 
 Route::get('/jobs/aplicantions', 'JobController@applicant')->name('applicants');
+Route::get('/jobs/alljobs', 'JobController@alljobs')->name('alljobs');
+
 
 //company
 Route::get('company/{id}/{company}', 'CompanyController@index')->name('company.index');

@@ -20,7 +20,7 @@ class JobController extends Controller
 
     public function __construct()
     {
-        $this->middleware('employer', ['except' => array('index', 'show', 'apply')]);
+        $this->middleware('employer', ['except' => array('index', 'show', 'apply', 'alljobs')]);
     }
 
     public function index()
@@ -150,5 +150,11 @@ class JobController extends Controller
         //dd($applicants);
         //return $applicants;
         return view('jobs.applicants', compact('applicants'));
+    }
+
+    public function alljobs()
+    {
+        $jobs = Job::paginate(8);
+        return view('jobs.alljobs', compact('jobs'));
     }
 }
