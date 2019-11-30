@@ -3,7 +3,39 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <h1>Ажлын байрны жагсаалт</h1>
+        <form action="{{ route('alljobs') }}" method="GET">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="">Хайх түлхүүр үг&nbsp;</label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">&nbsp;&nbsp;Ажлын нөхцөл&nbsp;</label>
+                    <select name="type" class="form-control">
+                        <option value="">Ажлын нөхцөл сонгох</option>
+                        <option value="fulltime">Бүтэн цагийн</option>
+                        <option value="parttime">Цагийн</option>
+                        <option value="casual">Гэрээт</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">&nbsp;&nbsp;Ангилал&nbsp;</label>
+                    <select name="category_id" class="form-control">
+                            <option value="">Ангилал сонгох</option>
+                        @foreach (App\Category::all() as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">&nbsp;&nbsp;Хаяг&nbsp;</label>
+                    <input type="text" name="address" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-success">Хайх</button>
+                </div>
+            </div>
+        </form>
         <table class="table">
             <thead>
                 <th></th>
@@ -39,7 +71,8 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $jobs->links() }}
+        {{ $jobs->appends(request()->except('page'))->links() }}
+
     </div>
 </div>
 
