@@ -172,6 +172,8 @@ class JobController extends Controller
         } else {
             $jobs = Job::paginate(8);
             return view('jobs.alljobs', compact('jobs'));
+            //энэ бол бранч тест...
+
         }
     }
 }
