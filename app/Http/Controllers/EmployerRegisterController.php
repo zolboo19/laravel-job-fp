@@ -24,6 +24,7 @@ class EmployerRegisterController extends Controller
             'cname' => $request->cname,
             'slug' => Str::slug($request->cname)
         ]);
+        $user->sendEmailVerificationNotification();
         return redirect()->to('login');
     }
 }
