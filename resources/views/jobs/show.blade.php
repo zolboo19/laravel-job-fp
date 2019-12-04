@@ -38,10 +38,11 @@
                 <br>
                 @if(Auth::check() && Auth::user()->user_type == 'simple_user')
                     @if(!$job->checkApplication())
-                        <form action="{{  route('apply', [$job->id]) }}" method="GET">
+                    <apply-job-component jobid={{ $job->id }}></apply-job-component>
+                        {{-- <form action="{{  route('apply', [$job->id]) }}" method="GET">
                             @csrf
                             <button type="submit" class="btn btn-success" style="width: 100%">Ажилд орох хүсэлт илгээх</button>
-                        </form>
+                        </form> --}}
                     @endif()
                 @endif
                 @if(Session::has('MessageApply'))
