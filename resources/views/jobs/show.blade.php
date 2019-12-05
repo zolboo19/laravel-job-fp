@@ -43,7 +43,11 @@
                             @csrf
                             <button type="submit" class="btn btn-success" style="width: 100%">Ажилд орох хүсэлт илгээх</button>
                         </form> --}}
-                    @endif()
+                    @endif
+                    <br>
+                    <favourite-job-component jobid={{ $job->id }} :favourited={{ $job->checkSaved() ? 'true' : 'false' }}></favourite-job-component>
+
+
                 @endif
                 @if(Session::has('MessageApply'))
                     <div class="alert alert-success">

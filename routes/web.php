@@ -23,10 +23,14 @@ Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 Route::get('/jobs/{id}/{job}/editmyjob', 'JobController@edit')->name('jobs.edit');
 Route::post('/jobs/{id}/editmyjob', 'JobController@update')->name('jobs.update');
 Route::get('/jobs/myjob', 'JobController@myjob')->name('myjob');
-Route::get('/applications/{id}', 'JobController@apply')->name('apply');
+Route::post('/applications/{id}', 'JobController@apply')->name('apply');
 
 Route::get('/jobs/aplicantions', 'JobController@applicant')->name('applicants');
 Route::get('/jobs/alljobs', 'JobController@alljobs')->name('alljobs');
+
+//Таалагдсан ажлын байрыг тэмдэглэх.
+Route::post('/jobs/save/{id}', 'FavouriteController@savejob')->name('savejob');
+Route::post('/jobs/unsave/{id}', 'FavouriteController@unsavejob')->name('unsavejob');
 
 
 //company

@@ -28,6 +28,11 @@ Vue.component(
     "apply-job-component",
     require("./components/ApplyJobComponent.vue").default
 );
+
+Vue.component(
+    "favourite-job-component",
+    require("./components/FavouriteJobComponent.vue").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

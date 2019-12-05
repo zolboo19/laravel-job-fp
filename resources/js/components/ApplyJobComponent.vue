@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>{{ jobId }}</h1>
     <form @submit="formSubmit">
       <button
         v-if="show"
@@ -8,6 +7,10 @@
         class="btn btn-success"
         style="width: 100%"
       >Ажилд орох хүсэлт илгээх</button>
+      <div
+        v-else
+        class="alert alert-success"
+      >Ажилд орох хүсэлтийг хүлээн авлаа, Тун удахгүй хариу мэдэгдэх болно.</div>
     </form>
   </div>
 </template>
@@ -28,7 +31,9 @@ export default {
       e.preventDefault();
       axios
         .post("/applications/" + this.jobid)
-        .then()
+        .then(response => {
+          this.show = false;
+        })
         .catch();
     }
   }
