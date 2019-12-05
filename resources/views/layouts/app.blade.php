@@ -83,7 +83,7 @@
                                         <a class="dropdown-item" href="{{ route('myjob') }}">{{ __('Ажлын байрны жагсаалт') }}</a>
                                         <a class="dropdown-item" href="{{ route('applicants') }}">{{ __('Ажилд орох хүсэлтүүд харах') }}</a>
                                     @else
-                                        <a class="dropdown-item" href="{{ route('user.profile') }}">{{ __(Профайл) }}</a>
+                                        <a class="dropdown-item" href="{{ route('user.profile') }}">Профайл</a>
 
                                         <a class="dropdown-item" href="{{ route('home') }}">Ажлын байрны жагсаалт</a>
                                     @endif

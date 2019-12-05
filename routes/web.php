@@ -32,6 +32,9 @@ Route::get('/jobs/alljobs', 'JobController@alljobs')->name('alljobs');
 Route::post('/jobs/save/{id}', 'FavouriteController@savejob')->name('savejob');
 Route::post('/jobs/unsave/{id}', 'FavouriteController@unsavejob')->name('unsavejob');
 
+//Search
+Route::get('/jobs/search', 'JobController@searchjob')->name('job.search');
+
 
 //company
 Route::get('company/{id}/{company}', 'CompanyController@index')->name('company.index');
