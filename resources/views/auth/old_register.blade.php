@@ -1,17 +1,13 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
-    <div class="album text-muted">
-        <div class="container">
-            <div class="row">
-                <h3>Ажил хайгчаар бүртгүүлэх</h3>
-            </div>
-        </div>
-    </div>
-    <div class="site-section bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-8 mb-5">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Цахим ажлын байрны системд ажил хайгчаар бүртгүүлэх') }}</div>
+
+                <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <input type="hidden" name="user_type" value="simple_user">
@@ -105,4 +101,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

@@ -1,50 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Job Finder &mdash; Colorlib Website Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    @include('partialsjob.head')
-
-  </head>
-  <body>
-
-  <div class="site-wrap">
-
-    @include('partialsjob.nav')
-
-    <div style="height: 113px;"></div>
-
-    @include('partialsjob.findjob')
+@extends('layouts.master')
 
 
-    @include('partialsjob.categories')
+@section('content')
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo exercitationem explicabo quidem, odio nisi vero nesciunt pariatur. Obcaecati voluptatum, hic, nemo magnam aspernatur culpa dolorem unde quos rem dolorum ratione?
 
-
-    @include('partialsjob.resentjob')
-
-    @include('partialsjob.testimonies')
-
-
-    @include('partialsjob.yourdreamjob')
-
-
-
-    @include('partialsjob.whychooseus')
-
-
-
-
-    @include('partialsjob\blog')
-
-
-
-
-    @include('partialsjob.footer')
-  </div>
-
-    @include('partialsjob.scriptsjob')
-
-  </body>
-</html>
+@endsection
