@@ -56,6 +56,42 @@
                                         </span>
                                 @endif
                               </div>
+
+                            <div class="form-group">
+                                <input type="text" name="number_of_vacancy" class="form-control {{ $errors->has('number_of_vacancy') ? ' is-invalid' : '' }}" placeholder="Ажлын байрны тоо оруулна уу?">
+                                @if($errors->has('number_of_vacancy'))
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $errors->first('number_of_vacancy') }}</strong>
+                                      </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="experience" class="form-control {{ $errors->has('experience') ? ' is-invalid' : '' }}" placeholder="Ажилтанд тавигдах ажлын байрны туршлагын талаарх мэдээлэл оруулна уу?">
+                                @if($errors->has('experience'))
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $errors->first('experience') }}</strong>
+                                      </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="gender">
+                                    <option value="">---хүйс сонгох---</option>
+                                    <option value="male">Эрэгтэй</option>
+                                    <option value="female">Эмэгтэй</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="salary">
+                                    <option value="тохиролцох боломжтой">Тохиролцоно</option>
+                                    <option value="500000-600000">500000-600000</option>
+                                    <option value="500000-600000">600000-700000</option>
+                                    <option value="500000-600000">700000-800000</option>
+                                    <option value="500000-600000">900000-1000000</option>
+                                    <option value="500000-600000">1000000-11000000</option>
+
+                                </select>
+                            </div>
+
                               <div class="form-group">
                                   <select name="type" class="form-control">
                                       <option value="fulltime">Орон тооны ажилтан</option>

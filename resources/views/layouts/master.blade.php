@@ -16,27 +16,27 @@
     <div style="height: 113px;"></div>
 
     @yield('content')
-    {{-- @include('partialsjob.findjob')
+    {{-- @include('partialsjob.findjob') --}}
 
 
-    @include('partialsjob.categories')
+    {{-- @include('partialsjob.categories') --}}
 
 
-    @include('partialsjob.resentjob')
+    {{-- @include('partialsjob.resentjob') --}}
 
-    @include('partialsjob.testimonies')
+    {{-- @include('partialsjob.testimonies') --}}
 
 
     @include('partialsjob.yourdreamjob')
 
 
 
-    @include('partialsjob.whychooseus')
+    {{-- @include('partialsjob.whychooseus') --}}
 
 
 
 
-    @include('partialsjob\blog') --}}
+    {{-- @include('partialsjob\blog') --}}
 
 
 

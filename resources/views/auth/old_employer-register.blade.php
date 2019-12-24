@@ -1,48 +1,30 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
-    {{-- <div class="album text-muted">
-        <div class="container">
-            <div class="row">
-                <h3>Ажил хайгчаар бүртгүүлэх</h3>
-            </div>
-        </div>
-    </div> --}}
-    <div class="site-section bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-8 mb-5">
-                    <form method="POST" action="{{ route('register') }}">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Цахим ажлын байрны системд ажил олгогчоор бүртгүүлэх') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('employer.register') }}">
                         @csrf
-                        <input type="hidden" name="user_type" value="simple_user">
+                        <input type="hidden" name="user_type" value="employer">
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Нэр') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Ажил олгогч компаны нэр') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="cname" type="text" class="form-control @error('cname') is-invalid @enderror" name="cname" value="{{ old('cname') }}" required autocomplete="cname" autofocus>
 
-                                @error('name')
+                                @error('cname')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ $cname }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                                <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Төрсөн огноо') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required autocomplete="dob" autofocus>
-
-                                    @error('dob')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Цахим шуудан') }}</label>
 
@@ -78,20 +60,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                        <div class="form-group row">
-                                <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Хүйс') }}</label>
-
-                                <div class="col-md-6">
-                                    <input type="radio" name="gender" value="male" required> Эрэгтэй
-                                    <input type="radio" name="gender" value="female" required> Эмэгтэй
-
-                                    @error('gender')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -105,4 +73,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

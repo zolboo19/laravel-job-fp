@@ -55,7 +55,42 @@
                                             <strong>{{ $errors->first('address') }}</strong>
                                         </span>
                                 @endif
-                              </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="number_of_vacancy" class="form-control {{ $errors->has('number_of_vacancy') ? ' is-invalid' : '' }}" placeholder="Ажлын байрны тоо оруулна уу?" value="{{ $job->number_of_vacancy }}">
+                                @if($errors->has('number_of_vacancy'))
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $errors->first('number_of_vacancy') }}</strong>
+                                      </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="experience" class="form-control {{ $errors->has('experience') ? ' is-invalid' : '' }}" placeholder="Ажилтанд тавигдах ажлын байрны туршлагын талаарх мэдээлэл оруулна уу?" value="{{ $job->experience }}">
+                                @if($errors->has('experience'))
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $errors->first('experience') }}</strong>
+                                      </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <select name="gender" class="form-control">
+                                        <option value="">---хүйс сонгох---</option>
+                                        <option value="male" {{ $job->gender =='male' ? 'selected':'' }}>Эрэгтэй</option>
+                                        <option value="0" {{ $job->gender =='female' ? 'selected':'' }}>Эмэгтэй</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="salary">
+                                    <option value="тохиролцох боломжтой" {{ $job->salary =='тохиролцох боломжтой' ? 'selected':'' }}>Тохиролцоно</option>
+                                    <option value="male" {{ $job->salary =='500000-600000' ? 'selected':'' }}>500000-600000</option>
+                                    <option value="600000-700000" {{ $job->salary =='600000-700000' ? 'selected':'' }}>Эмэ600000-700000гтэй</option>
+                                    <option value="700000-800000" {{ $job->salary =='700000-800000' ? 'selected':'' }}>700000-800000</option>
+                                    <option value="900000-1000000" {{ $job->salary =='900000-1000000' ? 'selected':'' }}>900000-1000000</option>
+                                    <option value="1000000-11000000" {{ $job->salary =='1000000-11000000' ? 'selected':'' }}>1000000-11000000</option>
+
+                                </select>
+                            </div>
                               <div class="form-group">
                                   <select name="type" class="form-control">
                                       <option value="fulltime" {{ $job->type == 'fulltime' ? 'selected' : '' }}>Орон тооны ажилтан</option>

@@ -50,6 +50,8 @@ class JobController extends Controller
      */
     public function store(JobPostRequest $request)
     {
+        //dd($request->all());
+
         //return $request->all();
         $user_id = Auth()->user()->id;
         $company = Company::where('user_id', $user_id)->first();
@@ -62,10 +64,15 @@ class JobController extends Controller
             'slug' => Str::slug($request->title),
             'description' => $request->description,
             'role' => $request->role,
+            'position' => $request->position,
             'address' => $request->address,
             'type' => $request->type,
             'status' => $request->status,
             'last_date' => $request->last_date,
+            'number_of_vacancy' => $request->number_of_vacancy,
+            'experience' => $request->experience,
+            'gender' => $request->gender,
+            'salary' => $request->salary
         ]);
         return redirect()->back()->with('MessageJob', 'Ажлын байрны зарыг амжилттай хадгаллаа.');
     }
@@ -120,6 +127,10 @@ class JobController extends Controller
             $job->type = $request->address,
             $job->status = $request->status,
             $job->last_date = $request->last_date,
+            $job->number_of_vacancy = $request->number_of_vacancy,
+            $job->experience = $request->experience,
+            $job->gender = $request->gender,
+            $job->salary = $request->salary,
         ]);
         return redirect()->back()->with('MessageUpdateJob', 'Ажил олгогчын зүгээс зарласан ажлын байрны мэдээллийг амжилттай заслаа.');
     }

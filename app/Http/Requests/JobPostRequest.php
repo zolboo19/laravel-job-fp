@@ -24,7 +24,6 @@ class JobPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'required',
             'title' => 'required|min:5',
             'description' => 'required',
             'role' => 'required',
@@ -33,6 +32,8 @@ class JobPostRequest extends FormRequest
             'type' => 'required',
             'status' => 'required',
             'last_date' => 'required',
+            'number_of_vacancy' => 'required|numeric',
+            'experience' => 'required',
         ];
     }
 }
