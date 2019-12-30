@@ -46,8 +46,6 @@
                     @endif
                     <br>
                     <favourite-job-component jobid={{ $job->id }} :favourited={{ $job->checkSaved() ? 'true' : 'false' }}></favourite-job-component>
-
-
                 @endif
                 @if(Session::has('MessageApply'))
                     <div class="alert alert-success">
