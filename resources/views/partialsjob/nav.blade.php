@@ -22,7 +22,7 @@
                 <div class="container">
                   <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
 
-                  <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <ul class="site-menu js-clone-nav d-none d-lg-block">
                     <!-- Right Side Of Navbar -->
 
                         <!-- Authentication Links -->
@@ -31,7 +31,7 @@
                                 {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Нэвтрэх') }}</a> --}}
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
                                     Нэвтрэх
-                                  </button>
+                                </button>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('employer.create') }}">{{ __('Ажил олгогч') }}</a>
@@ -42,8 +42,8 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="has-children">
+                                <a href="#">
                                     @if(Auth::user()->user_type === 'employer')
                                         {{ Auth::user()->company->cname }}
                                     @else
@@ -51,9 +51,7 @@
                                     @endif
                                     <span class="caret"></span>
                                 </a>
-
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <ul class="dropdown arrow-top">
                                     @if(Auth::user()->user_type === 'employer')
                                         <a class="dropdown-item" href="{{ route('company.create') }}">{{ __('Компаны мэдээлэл') }}</a>
                                         <a class="dropdown-item" href="{{ route('jobs.create') }}">{{ __('Ажлын байр үүсгэх') }}</a>
@@ -65,59 +63,59 @@
                                         <a class="dropdown-item" href="{{ route('home') }}">Ажлын байрны жагсаалт</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
+                                </ul>
                             </li>
                         @endguest
-                    {{-- <li><a href="categories.html">For Candidates</a></li>
-                    <li class="has-children">
-                      <a href="category.html">For Employees</a>
-                      <ul class="dropdown arrow-top">
-                        <li><a href="category.html">Category</a></li>
-                        <li><a href="#">Browse Candidates</a></li>
-                        <li><a href="new-post.html">Post a Job</a></li>
-                        <li><a href="#">Employeer Profile</a></li>
-                        <li class="has-children">
-                          <a href="#">More Links</a>
-                          <ul class="dropdown">
-                            <li><a href="#">Browse Candidates</a></li>
-                            <li><a href="#">Post a Job</a></li>
-                            <li><a href="#">Employeer Profile</a></li>
-                          </ul>
-                        </li>
-
-                      </ul>
-                    </li>
-
-                    <li><a href="contact.html">Contact</a></li> --}}
-                    {{-- <li><a href="new-post.html"><span class="bg-primary text-white py-3 px-4 rounded"><span class="icon-plus mr-3"></span>Post New Job</span></a></li> --}}
-                  </ul>
+                            {{-- <li>
+                                <a href="categories.html">For Candidates</a>
+                            </li>
+                            <li class="has-children">
+                                <a href="category.html">For Employees</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="category.html">Category</a></li>
+                                    <li><a href="#">Browse Candidates</a></li>
+                                    <li><a href="new-post.html">Post a Job</a></li>
+                                    <li><a href="#">Employeer Profile</a></li>
+                                    <li class="has-children">
+                                        <a href="#">More Links</a>
+                                        <ul class="dropdown">
+                                            <li><a href="#">Browse Candidates</a>
+                                            </li>                                            <li><a href="#">Post a Job</a>
+                                            </li>
+                                            <li><a href="#">Employeer Profile</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li> --}}
+                        </ul>
+                    </div>
+                </nav>
                 </div>
-              </nav>
             </div>
-          </div>
+            </div>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Нэвтрэх</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Нэвтрэх</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         <form method="POST" action="{{ route('login') }}">
             @csrf
