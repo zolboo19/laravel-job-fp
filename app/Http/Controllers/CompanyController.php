@@ -14,7 +14,7 @@ class CompanyController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('employer', ['except' => array('index', 'show')]);
+        $this->middleware(['employer', 'verified'], ['except' => array('index', 'show', 'company')]);
     }
 
     public function index($id, Company $company)
@@ -54,11 +54,10 @@ class CompanyController extends Controller
         return redirect()->back()->with('MessageLogo', 'Ажил олгогчын лого зургийг амжилттай шинэчиллээ.');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function company(){
+        $companies = Company::paginate(10);
+        return view('companies.company', compact('companies'));
+    }
     public function create()
     {
         return view('companies.create');

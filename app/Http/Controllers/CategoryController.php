@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Job;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,9 +13,13 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $jobs = Job::where('category_id', $id)->paginate(4);
+        $categories = Category::all();
+        //return $jobs;
+        $categoryName = Category::where('id', $id)->first();
+        return view('jobs.jobs-category', compact('jobs', 'categories', 'categoryName'));
     }
 
     /**

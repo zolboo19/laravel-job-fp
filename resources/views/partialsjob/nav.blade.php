@@ -42,6 +42,9 @@
                                 </li>
                             @endif
                         @else
+                            <li>
+                                <a href="{{ route('company') }}">Ажил олгогчид</a>
+                            </li>
                             <li class="has-children">
                                 <a href="#">
                                     @if(Auth::user()->user_type === 'employer')
@@ -176,10 +179,10 @@
                 </div> --}}
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Болих</button>
-              <button type="submit" class="btn btn-primary">Нэвтрэх</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Болих</button>
+                <button type="submit" class="btn btn-primary">Нэвтрэх</button>
             </div>
-        </form>
-      </div>
+            </form>
+        </div>
     </div>
-  </div>
+</div>

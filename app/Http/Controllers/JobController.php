@@ -27,6 +27,7 @@ class JobController extends Controller
     {
         $jobs = Job::latest()->limit(5)->where('status', 1)->get();
         $categories = Category::with('jobs')->get();
+        //return $categories;
         $companies = Company::limit(10)->get();
         return view('welcome', compact('jobs', 'companies', 'categories'));
     }
@@ -166,6 +167,21 @@ class JobController extends Controller
 
     public function alljobs(Request $request)
     {
+        //frontpage search
+        $search = $request->search;
+        $address = $request->address;
+        if($search && $address){
+            $jobs = Job::where('title', 'LIKE', '%' . $search . '%')
+                ->orWhere('position', $search)
+                ->orWhere('type', $search)
+                ->orWhere('address', $address)
+                ->paginate(10);
+            //dd($jobs['data'][0]);
+            //dd($jobs);
+            $categories = Category::all();
+            return view('jobs.alljobs', compact('jobs', 'categories'));
+        }
+
         $title = $request->title;
         $type = $request->type;
         $category = $request->category_id;
@@ -180,10 +196,12 @@ class JobController extends Controller
                 ->paginate(1);
             //dd($jobs['data'][0]);
             //dd($jobs);
-            return view('jobs.alljobs', compact('jobs'));
+            $categories = Category::all();
+            return view('jobs.alljobs', compact('jobs', 'categories'));
         } else {
             $jobs = Job::paginate(8);
-            return view('jobs.alljobs', compact('jobs'));
+            $categories = Category::all();
+            return view('jobs.alljobs', compact('jobs', 'categories'));
         }
     }
 
