@@ -62,5 +62,7 @@ Route::post('employer/register', 'EmployerRegisterController@store')->name('empl
 
 Route::post('jobs/email', 'EmailController@email')->name('email');
 
-//admin
-Route::get('/dashboard', 'DashboardController@index')->middleware('admin');
+//admin0
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('admin');
+Route::get('/dashboard/create', 'DashboardController@create')->name('post.create')->middleware('admin');
+Route::post('/dashboard/create', 'DashboardController@store')->name('post.store')->middleware('admin');

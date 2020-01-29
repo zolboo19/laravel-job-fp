@@ -82,10 +82,11 @@
                                         <a class="dropdown-item" href="{{ route('jobs.create') }}">{{ __('Ажлын байр үүсгэх') }}</a>
                                         <a class="dropdown-item" href="{{ route('myjob') }}">{{ __('Ажлын байрны жагсаалт') }}</a>
                                         <a class="dropdown-item" href="{{ route('applicants') }}">{{ __('Ажилд орох хүсэлтүүд харах') }}</a>
-                                    @else
+                                    @elseif(Auth::user()->user_type === 'simple_user')
                                         <a class="dropdown-item" href="{{ route('user.profile') }}">Профайл</a>
 
                                         <a class="dropdown-item" href="{{ route('home') }}">Ажлын байрны жагсаалт</a>
+                                        @else
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
