@@ -87,7 +87,42 @@ class JobController extends Controller
      */
     public function show($id, Job $job)
     {
-        return view('jobs.show', compact('job'));
+        //dd($job->position );
+        $data = [];
+        $jobBasedOnCategories = Job::latest()
+            ->where('category_id', $job->category_id)
+            ->whereDate('last_date', '>', date('Y-m-d'))
+            ->where('id', '!=', $job->id)
+            ->where('status', 1)
+            ->limit(2)
+            ->get();
+        array_push($data, $jobBasedOnCategories);
+        //dd($jobBasedOnCategories);
+        //dd($data);
+
+        $jobBasedOnCompany = Job::latest()
+        ->where('company_id', $job->company_id)
+        ->whereDate('last_date', '>', date('Y-m-d'))
+        ->where('id', '!=', $job->id)
+        ->where('status', 1)
+        ->limit(2)
+        ->get();
+        array_push($data, $jobBasedOnCompany);
+        //dd($jobBasedOnCompany);
+        $jobBasedOnPosition = Job::latest()
+            ->where('position', 'LIKE', '%' . $job->position . '%')
+            ->whereDate('last_date', '>', date('Y-m-d'))
+            ->where('id', '!=', $job->id)
+            ->where('status', 1)
+            ->limit(2)
+            ->get();
+        array_push($data, $jobBasedOnPosition);
+
+        $collection = collect($data);
+        $unique = $collection->unique("id");
+        $jobRecommendations = $unique->values()->first();
+        //return($jobRecommendations);
+        return view('jobs.show', compact('job', 'jobRecommendations'));
     }
 
     public function myjob()

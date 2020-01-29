@@ -89,17 +89,17 @@
                             </p>
                     </div>
 
-                </div>
-                    {{-- @foreach($jobRecommendations as $jobRecommendation)
+                    @foreach($jobRecommendations as $jobRecommendation)
                     <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <p class="badge badge-success">{{$jobRecommendation->type}}</p>
                         <h5 class="card-title">{{$jobRecommendation->position}}</h5>
-                        <p class="card-text">{{str_limit($jobRecommendation->description,90)}}
+                        <p class="card-text">{{Str::limit($jobRecommendation->description,90)}}
                     <center> <a href="{{route('jobs.show',[$jobRecommendation->id,$jobRecommendation->slug])}}" class="btn btn-success">Apply</a></center>
                     </div>
                     </div>
-                    @endforeach --}}
+                    @endforeach
+                </div>
 
 
             <!-- Button trigger modal -->
