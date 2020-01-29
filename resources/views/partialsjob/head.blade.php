@@ -18,3 +18,5 @@
     <link rel="stylesheet" href="{{ asset('jobfinder/css/aos.css') }}">
 
     <link rel="stylesheet" href="{{ asset('jobfinder/css/style.css') }}">
+
+    <script src="https://kit.fontawesome.com/f2a97e7d0d.js" crossorigin="anonymous"></script>

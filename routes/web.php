@@ -57,3 +57,7 @@ Route::post('/user/profile/avatar', 'UserController@avatar')->name('user.profile
 //Employers
 Route::view('employer/register', 'auth.employer-register')->name('employer.create');
 Route::post('employer/register', 'EmployerRegisterController@store')->name('employer.register');
+
+//JOb e-mail
+
+Route::post('jobs/email', 'EmailController@email')->name('email');

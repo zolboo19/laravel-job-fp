@@ -2,6 +2,12 @@
 @section('content')
     <div class="album text-muted">
         <div class="container">
+            @if(Session::has('message'))
+                <div class="alert alert-success">{{ Session::get('message') }}</div>
+            @endif
+            @if(Session::has('error-message'))
+                <div class="alert alert-danger">{{ Session::get('error-message') }}</div>
+            @endif
             <div class="row" id="app">
                 <div class="title" style="margin-top: 20px;">
                     <h2>{{$job->title}}</h2>
@@ -12,7 +18,7 @@
                 <div class="col-lg-8">
                     <div class="p-4 mb-8 bg-white">
                         <!-- icon-book mr-3-->
-                        <h3 class="h5 text-black mb-3"><i class="fa fa-book" style="color: blue;">&nbsp;</i>Description <a href="#"data-toggle="modal" data-target="#exampleModal1"><i class="fa fa-envelope-square" style="font-size: 34px;float:right;color:green;"></i></a></h3>
+                        <h3 class="h5 text-black mb-3"><i class="fa fa-book" style="color: blue;">&nbsp;</i>Дэлгэрэнгүй мэдээлэл <a href="#" data-toggle="modal" data-target="#exampleModal1"><i class="fa fa-envelope-square" style="font-size: 34px;float:right;color:green;"></i></a></h3>
                         <p> {{$job->description}}.</p>
 
                     </div>
@@ -96,47 +102,49 @@
                     @endforeach --}}
 
 
-            <!-- Modal -->
-                {{-- <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Send job to your friend</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form action="{{route('mail')}}" method="POST">@csrf
-                                <div class="modal-body">
-                                    <input type="hidden" name="job_id" value="{{$job->id}}">
-                                    <input type="hidden" name="job_slug" value="{{$job->slug}}">
+            <!-- Button trigger modal -->
 
-                                    <div class="form-goup">
-                                    <label>Your name * </label>
-                                    <input type="text" name="your_name" class="form-control" required="">
-                                    </div>
-                                    <div class="form-goup">
-                                    <label>Your email *</label>
-                                    <input type="email" name="your_email" class="form-control" required="">
-                                    </div>
-                                    <div class="form-goup">
-                                    <label>Person name *</label>
-                                    <input type="text" name="friend_name" class="form-control" required="">
-                                    </div>
-                                    <div class="form-goup">
-                                    <label>Person email *</label>
-                                    <input type="email" name="friend_email" class="form-control" required="">
-                                    </div>
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Mail this job</button>
-                                </div>
-                            </form>
-                        </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Санал болгох ажлын байр</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <form action="{{ route('email') }}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <input type="hidden" name="job_id" value="{{ $job->id }}">
+                    <input type="hidden" name="job_slug" value="{{ $job->slug }}">
+                    <div class="form-group">
+                        <label for="">Таны нэр</label>
+                        <input type="text" name="your_name" class="form-control">
                     </div>
-                </div> --}}
+                    <div class="form-group">
+                        <label for="">Таны цахим хаяг</label>
+                        <input type="email" name="your_email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Санал болгох хүний нэр</label>
+                        <input type="text" name="friend_name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Санал болгох хүний цахим шуудан</label>
+                        <input type="email" name="friend_email" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Цуцлах</button>
+                <button type="submit" class="btn btn-primary">Цахим шуудан илгээх</button>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
             </div>
             <br>
         </div>
