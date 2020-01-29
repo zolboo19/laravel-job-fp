@@ -24,8 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jobs = Auth::user()->favourite;
+        //$jobs = Auth::user()->favourite;
         //dd($jobs);
-        return view('home', compact('jobs'));
+        if(Auth::user()->user_type == 'employer'){
+            return redirect()->to('/company/create');
+        }
+
+        $adminRole = Auth::user()->roles()->pluck('name');
+        if($adminRole->contains('admin')){
+            return redirect('/dashboard');
+        }
     }
 }

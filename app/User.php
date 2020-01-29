@@ -4,6 +4,7 @@ namespace App;
 
 use App\Profile;
 use App\Company;
+use App\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,5 +55,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function favourite()
     {
         return $this->belongsToMany(Job::class, 'favourites', 'user_id', 'job_id')->withTimestamps();
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use App\Category;
+use App\Role;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -30,5 +32,14 @@ class DatabaseSeeder extends Seeder
             Category::create(['name' => $category]);
         }
         factory('App\Job', 20)->create();
+
+        $adminRole = Role::create(['name' => 'admin']);
+        $admin = User::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => NOW()
+        ]);
+        $admin->roles()->attach($adminRole);
     }
 }
